@@ -1,0 +1,77 @@
+@mixin keyframes($name)
+    @keyframes #{$name}
+        @content
+
+
+@mixin animate($animation,$duration,$method,$times)
+    animation: $animation $duration $method $times
+
+    
+ 
+    
+.app-wrapper
+    background-color: lightblue
+    position: absolute
+    border: 2px solid black
+    width: 100%
+    
+.content-wrapper
+    background-color: lightred  
+    position: absolute
+    overflow: hidden
+
+.content-wrapper:hover
+    cursor: grab
+
+.content-flexbox
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+.content-fade-in
+    @include keyframes(fadein)
+        0%
+            opacity: 0
+        100%
+            opacity: 1
+    @include animate(fadein, 0.2s, linear, 1)
+
+.content-fade-out
+    @include keyframes(fadeout)
+        0%
+            opacity: 1
+        100%
+            opacity: 0
+    @include animate(fadeout, 0.2s, linear, 1)
+
+.content
+    opacity: 0
+
+.content-wrapper:active
+    cursor: grabbing
+
+.resizers
+    box-sizing: border-box
+
+    .resizer
+      opacity: 1
+      width: 6px
+      height: 6px
+      border-radius: 1px
+      background: white
+      border: 1px solid #d50000
+      position: absolute
+
+    .right
+      top: 0
+      right: -3px
+      height: 100%
+      cursor: ew-resize
+    
+@keyframes fadeIn
+  0% 
+    opacity: 0
+  100% 
+    opacity: 1
